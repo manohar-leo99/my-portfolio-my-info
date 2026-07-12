@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+:root {
+  /* Colors */
+  --color-cream-paper: #f8f8f2;
+  --color-card-white: #ffffff;
+  --color-studio-ink: #1a1a1a;
+  --color-deep-black: #000000;
+  --color-powder-blue: #bedbff;
+  --color-mint-wash: #a4f4cf;
+  --color-blush-tint: #ffc9c9;
+  --color-signal-green: #00c950;
+
+  /* Typography — Font Families */
+  --font-apple-system: 'Inter', -apple-system, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Typography — Scale */
+  --text-caption: 14px;
+  --leading-caption: 1.43;
+  --tracking-caption: -0.35px;
+  --text-body: 16px;
+  --leading-body: 1.5;
+  --tracking-body: -0.4px;
+  --text-subheading: 20px;
+  --leading-subheading: 1.4;
+  --tracking-subheading: -0.5px;
+  --text-heading: 30px;
+  --leading-heading: 1.2;
+  --tracking-heading: -0.75px;
+  --text-heading-lg: 48px;
+  --leading-heading-lg: 1.2;
+  --tracking-heading-lg: -1.2px;
+  --text-display: 88px;
+  --leading-display: 1;
+  --tracking-display: -2.2px;
+  --text-display-xl: 96px;
+  --leading-display-xl: 1;
+  --tracking-display-xl: -2.4px;
+
+  /* Typography — Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Spacing */
+  --spacing-8: 8px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-48: 48px;
+  --spacing-64: 64px;
+  --spacing-96: 96px;
+  --spacing-112: 112px;
+  --spacing-176: 176px;
+
+  /* Layout */
+  --page-max-width: 1200px;
+  --navbar-height: 80px;
+
+  /* Border Radii */
+  --radius-tags: 9999px;
+  --radius-cards: 12px;
+  --radius-images: 12px;
+  --radius-buttons: 8px;
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-apple-system);
+  background-color: var(--color-cream-paper);
+  color: var(--color-studio-ink);
+  line-height: var(--leading-body);
+  font-size: var(--text-body);
+  letter-spacing: var(--tracking-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-apple-system);
+  color: var(--color-studio-ink);
+  font-weight: var(--font-weight-bold);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+/* Base Layout Classes */
+.section {
+  padding: var(--spacing-96) var(--spacing-24);
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: var(--spacing-112) var(--spacing-32);
+  }
+}
+
+.section-title {
+  font-size: var(--text-heading-lg);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-heading-lg);
+  line-height: var(--leading-heading-lg);
+  margin-bottom: var(--spacing-16);
+  text-align: left;
+}
+
+.section-subtitle {
+  text-align: left;
+  max-width: 600px;
+  margin-bottom: var(--spacing-48);
+  font-size: var(--text-body);
+  color: var(--color-studio-ink);
+  opacity: 0.6;
+}
+
+/* Custom Scrollbar to match minimalism */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cream-paper);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-studio-ink);
+}

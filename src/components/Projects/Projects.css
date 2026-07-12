@@ -1,0 +1,102 @@
+.projects-section {
+  background-color: var(--color-cream-paper);
+}
+
+.projects-subtitle {
+  font-size: var(--text-body);
+  color: var(--color-studio-ink);
+  opacity: 0.6;
+  margin-bottom: var(--spacing-48);
+}
+
+.projects-grid-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-32);
+}
+
+@media (min-width: 768px) {
+  .projects-grid-layout {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: var(--spacing-32);
+    row-gap: var(--spacing-48);
+  }
+}
+
+.collaboration-project-card {
+  position: relative;
+  background-color: transparent;
+  border-radius: var(--radius-images);
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
+
+.project-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-images);
+  overflow: hidden;
+}
+
+.project-svg-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Overlay covering the image */
+.project-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(26, 26, 26, 0.4) 0%, rgba(26, 26, 26, 0.6) 100%);
+  padding: var(--spacing-24);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  opacity: 0.95;
+  transition: opacity 0.2s ease;
+}
+
+.project-card-header {
+  text-align: left;
+}
+
+.project-card-title {
+  font-size: var(--text-subheading);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-subheading);
+  color: var(--color-card-white);
+  margin-bottom: var(--spacing-8);
+}
+
+.project-card-credit {
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-caption);
+  color: var(--color-card-white);
+  opacity: 0.8;
+}
+
+.project-card-actions {
+  display: flex;
+  gap: var(--spacing-16);
+  justify-content: flex-end;
+}
+
+.project-action-link {
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-caption);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-card-white);
+  border-bottom: 1px solid var(--color-card-white);
+  padding-bottom: 2px;
+  transition: opacity 0.2s ease;
+}
+
+.project-action-link:hover {
+  opacity: 0.8;
+}
