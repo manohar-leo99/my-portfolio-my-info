@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ProjectCard({ title, description, tags, demoUrl, githubUrl, index }) {
+export default function ProjectCard({ title, description, tags, demoUrl, githubUrl, index, image }) {
   // Generate different elegant geometric SVG shapes for each project visual placeholder
   const getPlaceholderSvg = (idx) => {
     const patterns = [
@@ -26,7 +26,11 @@ export default function ProjectCard({ title, description, tags, demoUrl, githubU
   return (
     <div className="collaboration-project-card">
       <div className="project-image-wrapper">
-        {getPlaceholderSvg(index)}
+        {image ? (
+          <img src={image} alt={title} className="project-card-image" />
+        ) : (
+          getPlaceholderSvg(index)
+        )}
         
         <div className="project-card-overlay">
           <div className="project-card-header">

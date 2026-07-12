@@ -1,6 +1,8 @@
 import React from 'react';
 import ProjectCard from './ProjectCard';
 import './Projects.css';
+import ecommercePreview from '../../assets/ecommerce-preview.png';
+import foodDeliveryPreview from '../../assets/food-delivery-preview.png';
 
 export default function ProjectsGrid() {
   const projects = [
@@ -9,14 +11,16 @@ export default function ProjectsGrid() {
       description: "Shopping platform with cart management.",
       tags: ["React", "CSS Grid"],
       demoUrl: "https://manohar-leo99.github.io/E-commerce-Website-LandingPage",
-      githubUrl: "https://github.com/manohar-leo99/E-commerce-Website-LandingPage"
+      githubUrl: "https://github.com/manohar-leo99/E-commerce-Website-LandingPage",
+      image: ecommercePreview
     },
     {
       title: "Food Delivery App",
       description: "On-demand food ordering experience.",
       tags: ["React", "Flexbox"],
       demoUrl: "https://manohar-leo99.github.io/Swiggy-Style-Food-Delivery-Web-App/",
-      githubUrl: "https://github.com/manohar-leo99/Swiggy-Style-Food-Delivery-Web-App"
+      githubUrl: "https://github.com/manohar-leo99/Swiggy-Style-Food-Delivery-Web-App",
+      image: foodDeliveryPreview
     },
     {
       title: "Product Landing Page",
@@ -77,6 +81,7 @@ export default function ProjectsGrid() {
             tags={project.tags}
             demoUrl={project.demoUrl}
             githubUrl={project.githubUrl}
+            image={project.image}
           />
         ))}
       </div>
