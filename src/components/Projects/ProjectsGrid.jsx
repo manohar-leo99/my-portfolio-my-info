@@ -8,15 +8,15 @@ export default function ProjectsGrid() {
       title: "E-commerce Website",
       description: "Shopping platform with cart management.",
       tags: ["React", "CSS Grid"],
-      demoUrl: "#",
-      githubUrl: "#"
+      demoUrl: "https://manohar-leo99.github.io/E-commerce-Website-LandingPage",
+      githubUrl: "https://github.com/manohar-leo99/E-commerce-Website-LandingPage"
     },
     {
       title: "Food Delivery App",
       description: "On-demand food ordering experience.",
       tags: ["React", "Flexbox"],
-      demoUrl: "#",
-      githubUrl: "#"
+      demoUrl: "https://manohar-leo99.github.io/Swiggy-Style-Food-Delivery-Web-App/",
+      githubUrl: "https://github.com/manohar-leo99/Swiggy-Style-Food-Delivery-Web-App"
     },
     {
       title: "Product Landing Page",
