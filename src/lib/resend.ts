@@ -22,6 +22,31 @@ function getResendClient(): Resend {
   return new Resend(apiKey);
 }
 
+/**
+ * Helper to resolve a valid Resend 'from' address.
+ * Resend does NOT allow sending from unverified public webmail domains like @gmail.com, @yahoo.com, @outlook.com.
+ * If a public webmail domain is passed in RESEND_FROM_EMAIL or if unconfigured, fallback to 'onboarding@resend.dev'.
+ */
+function getFromEmail(): string {
+  const envFrom = (process.env.RESEND_FROM_EMAIL || '').trim();
+  if (!envFrom) {
+    return 'onboarding@resend.dev';
+  }
+
+  // Extract email if formatted as "Name <email@domain.com>"
+  const match = envFrom.match(/<([^>]+)>/) || [null, envFrom];
+  const actualEmail = match[1] || envFrom;
+
+  const publicWebmailDomains = ['gmail.com', 'yahoo.com', 'outlook.com', 'hotmail.com', 'icloud.com', 'aol.com'];
+  const domain = actualEmail.split('@')[1]?.toLowerCase();
+
+  if (domain && publicWebmailDomains.includes(domain)) {
+    return 'onboarding@resend.dev';
+  }
+
+  return envFrom;
+}
+
 export async function sendContactEmails(
   params: SendContactEmailParams
 ): Promise<SendContactEmailResult> {
@@ -37,7 +62,7 @@ export async function sendContactEmails(
     timeZone: 'UTC',
   });
 
-  const fromEmail = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
+  const fromEmail = getFromEmail();
 
   // 1. Notification Email to Owner
   const notificationSubject = `New Portfolio Contact from ${params.name}`;
@@ -85,9 +110,9 @@ Manohar`;
   `;
 
   try {
-    // Send Notification Email
+    // Send Notification Email to Owner
     const notificationResponse = await resend.emails.send({
-      from: `Portfolio Notification <${fromEmail}>`,
+      from: `Portfolio Contact <${fromEmail}>`,
       to: [toEmail],
       replyTo: params.email,
       subject: notificationSubject,
@@ -103,18 +128,21 @@ Manohar`;
       };
     }
 
-    // Send Auto Reply Email to visitor
-    const autoReplyResponse = await resend.emails.send({
-      from: `Manohar <${fromEmail}>`,
-      to: [params.email],
-      subject: autoReplySubject,
-      text: autoReplyText,
-      html: autoReplyHtml,
-    });
+    // Try sending Auto Reply Email to visitor
+    try {
+      const autoReplyResponse = await resend.emails.send({
+        from: `Manohar <${fromEmail}>`,
+        to: [params.email],
+        subject: autoReplySubject,
+        text: autoReplyText,
+        html: autoReplyHtml,
+      });
 
-    if (autoReplyResponse.error) {
-      console.error('Error sending auto-reply email:', autoReplyResponse.error);
-      // Even if auto-reply has an issue, the primary notification succeeded. We can log but treat main request as successful or detail error.
+      if (autoReplyResponse.error) {
+        console.warn('Auto-reply warning (Resend domain restriction):', autoReplyResponse.error.message);
+      }
+    } catch (autoReplyErr) {
+      console.warn('Auto-reply non-critical error:', autoReplyErr);
     }
 
     return { success: true };
