@@ -83,7 +83,6 @@ export default function Navbar() {
           <span className="bg-gradient-to-r from-slate-900 via-slate-800 to-cyan-600 dark:from-slate-100 dark:via-slate-200 dark:to-cyan-400 bg-clip-text text-transparent">
             {profileData.name.split(" ")[1] || "Manohar"}
           </span>
-          <span className="w-2 h-2 rounded-full bg-cyan-500 dark:bg-cyan-400 animate-pulse" />
         </a>
 
         {/* Desktop Nav Items */}

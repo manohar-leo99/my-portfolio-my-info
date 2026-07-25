@@ -78,5 +78,5 @@ export const profileData: ProfileData = {
     }
   ],
   resumeUrl: "#contact",
-  avatarUrl: "/images/profile-pic.jpeg"
+  avatarUrl: "/images/profile-pic.png"
 };

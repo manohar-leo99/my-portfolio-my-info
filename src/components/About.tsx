@@ -50,7 +50,7 @@ export default function About() {
                   alt={profileData.name}
                   width={500}
                   height={500}
-                  className="w-full h-auto object-cover object-center grayscale hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-105"
+                  className="w-full h-auto object-cover object-center transition-all duration-500 scale-100 group-hover:scale-105"
                   priority
                 />
                 

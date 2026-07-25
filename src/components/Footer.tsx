@@ -17,7 +17,6 @@ export default function Footer() {
         <div className="text-center md:text-left space-y-1">
           <div className="font-heading font-bold text-lg text-slate-900 dark:text-slate-100 flex items-center justify-center md:justify-start gap-2">
             <span>{profileData.name}</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 dark:bg-cyan-400" />
           </div>
           <p className="text-xs text-slate-600 dark:text-slate-400">
             &copy; {currentYear} Medabalam Manohar. All rights reserved.
